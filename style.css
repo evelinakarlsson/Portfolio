@@ -1,0 +1,172 @@
+*{
+  box-sizing: border-box; /* Gör att padding och border räknas in i elementets höjd och bredd 
+                            i stället för att läggas på utanför. Gäller alla element på sidan. */
+}
+
+body {
+    background-color: #D3DACF; /* Val av bakgrundsfärg */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Val av typsnitt */
+    margin: 20px; /* Skapar 20 pixlars utrymme mellan sidans innehåll och kanten på webbläsarfönstret */
+}
+
+h1 {
+    font-size: 2rem; /* Val av storlek på den största rubriken. Väljer rem då det anpassar sig efter webbläsarinställningarna */
+}
+
+main {
+    display: flex; /* Gör main till en flex-container vilket gör de underordnade elementen till flex-items */
+    flex-direction: column; /* Gör att elementen i main staplas under varandra */
+    gap: 2rem; /* Skapar ett jämnt mellanrum mellan varje element i main för att få luft mellan */
+}
+
+img {
+    display: block; /* Gör bilder på sidan till block-element för att undvika extra utrymme under bilden */
+    max-width: 100%; /* Bilden får inte bli bredare än utrymmet den ligger i */ 
+    height: auto; /* Anpassar höjden på bilden så att proportionerna behålls när bredden ändras */
+}
+
+nav ul {
+    display: flex; /* Gör listan till en flex-container */
+    flex-direction: column; /* Gör att menyalternativen staplas under varandra på mobil */
+    gap: 1rem; /* Skapar mellanrum mellan varje menyalternativ */
+    list-style: none; /* Tar bort punkterna från varje listpunkt */
+    padding: 0; /* Tar bort listans standardindrag */
+}
+
+a {
+    text-decoration: none; /* Tar bort understrykningen som webbläsaren annars lägger på länkar automatiskt */
+    color: black; /* Gör texten svart istället för blå som annars är standard vid länkar */
+}
+
+h2 {
+    text-align: center; /* Centrerar horisontellt */
+    font-family: Arial, Helvetica, sans-serif; /* Val av typsnitt för h2-rubrikerna */
+}
+
+#erfarenhet h3, #erfarenhet p, #portfolio h3, #portfolio p {
+    margin: 0; /* Tar bort det automatiska utrymmet som webbläsaren annars lägger runt rubriker och paragrafer */
+}
+
+#erfarenhet article:not(:last-child) {
+    margin-bottom: 1.5rem; /* Skapar utrymme mellan artiklarna förutom efter den sista, så det inte blir extra utrymme till nästa sektion */
+}
+
+#kompetenser ul {
+    list-style: none; /* Tar bort punkterna från varje listpunkt */
+    padding: 0; /* Tar bort standardindraget */
+    display: flex; /* Gör listan till en flex-container så det blir lättare att styra listpunkterna  */
+    flex-direction: column; /* Gör att kompetenserna staplas under varandra på mobil*/
+    gap: 0.5rem; /* Skapar mellanrum mellan varje kompetens */
+}
+
+#kompetenser li {
+    background-color: beige; /* Val av bakgrundsfärg till varje listpunkt */
+    border-radius: 20px; /* Skapar rundade hörn på listpunkterna */
+    padding: 0.5rem 1rem; /* Skapar luft mellan texten och kanten på badgen. Första värdet styr ovanför/nedanför, andra värdet höger/vänster */
+    text-align: center; /* Centrerar texten inuti listpunkten */
+    font-weight: bold; /* Fet text */
+    border: 1px solid black; /* Gör en tunn svart kantlinje runt varje badge */
+}
+
+#portfolio {
+    display: grid; /* Gör elementet till en grid-container, vilket gör att vi kan placera saker i ett rutnät med rader och kolumner */
+    grid-template-columns: 1fr; /* Skapar en kolumn som tar upp all tillgänglig bredd = prjoketen blir staplade under varandra i mobilversionen */ 
+    gap: 1rem; /* Skapar mellanrum mellan varje projekt-ruta */
+}
+
+#portfolio article {
+    border: 1px solid black; /* Skapar en svart ram runt varje article*/
+    padding: 10px; /* Skapar luft mellan texten och kanten på rutan */
+    text-align: center; /* Centrerar texten i rutan */
+}
+
+#portfolio a {
+    display: inline-block; /* Gör att länken kan ha t.ex. margin-top, vilket vanliga inline-länkar inte kan */
+    margin-top: 0.75rem; /* Skapar lite avstånd upp till texten ovanför länken */
+}
+
+#kontakt ul {
+    display: flex; /* Gör listan till en flex-container */
+    flex-direction: column; /* Staplar länkarna under varandra i en kolumn vid små skärmar*/
+    gap: 1rem; /* Skapar mellanrum */
+    list-style: none; /* Tar bort punkterna från listan */
+    padding: 0; /* Tar bort listans standardindrag*/
+    text-align: center; /* Centrerar texten */
+}
+
+footer {
+    text-align: center; /* Centrerar texten i footer */
+}
+
+@media (min-width: 480px) and (max-width: 767px) { /* Denna regel gäller bara när skärmen är mellan 480px och 767px bred, t ex */ 
+    nav ul {
+        display: grid; /* Gör nav ul till en grid-container */
+        grid-template-columns: 1fr 1fr; /* Skapar två lika breda kolumner */
+        gap: 1rem; /* Skapar mellanrum mellan kolumnerna */ 
+    }
+}
+
+@media (min-width: 768px) { /* Denna regel gäller för skärmar som är  från 768px och uppåt */
+    main { 
+        gap: 4rem; /* Skapar mer luft mellan sektionerna på större skärmar eftersom det finns mer plats */
+    }
+
+    header {
+        display: flex; /* Gör header till en flex-container där h1 och nav blir objekt i containern */
+        justify-content: space-between; /* Gör att h1 hamnar så långt åt vänster som möjligt och nav så långt åt höger som möjligt i containern */
+        align-items: center; /* Centrerar h1 och nav så de hamnar på samma linje höjdmässigt */ 
+    }
+
+    h1 { 
+        font-size: 3rem; /* Gör att rubriken blir större på större skärmar */
+    }
+
+    nav ul {
+        flex-direction: row; /* Menyalternativen läggs på en rad bredvid varandra vid större skärmar */
+    }
+
+
+    #om-mig {
+        display: grid; /* Gör "Om mig"-sektionen till en grid-container för att kunna placera innehållet i kolumner och rader */
+        grid-template-columns: 1fr minmax(200px, 350px); /* Skapar två kolumner där första tar upp allt utrymme som blir över och 
+                                                        andra kolumnen är mellan 200px och 350px bred */
+        grid-template-areas: 
+            "rubrik rubrik"
+            "text   bild";
+        gap: 2rem; /* Skapar mellanrum mellan kolumnerna */
+        align-items: start; /* Innehållet i varje kolumn börjar högst upp */
+    }
+
+    #om-mig h2 {
+        grid-area: rubrik; /* Placerar h2-rubriken i grid-området som heter "rubrik" */
+    }
+    
+    #om-mig img {
+        grid-area: bild; /* Placerar bilden i grid-området som heter "bild" */
+    }
+
+    #om-mig .om-mig-text {
+        grid-area: text; /* Placerar texten i grid-området som heter "text" */
+    }
+
+    #kompetenser ul { 
+        flex-direction: row; /* Listan på kompetenser placeras i en rad */
+        flex-wrap: wrap; /* Om raden blir full flyttas nästa element automatiskt ner till en ny rad */
+        justify-content: center; /* Centrerar innehållet horisontellt */
+    } 
+
+    #portfolio {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Placerar projekten automatiskt i så många kolumner som får plats.
+                                                                    Varje ruta är minst 250px bred men växer för att fylla ut resten av utrymmet jämnt */
+    }
+
+    #portfolio h2 {
+        grid-column: 1 / -1; /* Rubriken sträcker sig över alla kolumner */
+    }
+
+    #kontakt ul { 
+        flex-direction: row; /* Länkarna läggs i en rad horisontellt bredvid varandra vid större skärm */
+        justify-content: center; /* Centrerar länkarna i containern */
+        gap: 2rem; /* Skapar mellanrum mellan varje länk, större värde eftersom vi har mer utrymme vid större skärm */
+    } 
+}
